@@ -5,7 +5,7 @@ services:
     # build:
     #   context: .
     #   dockerfile: Dockerfile
-    image: moqihzh/kingbaseslot-exporter:v0.1
+    image: moqihzh/kingbaseslot-exporter:latest
     ports:
       - "8001:8001"
     environment:

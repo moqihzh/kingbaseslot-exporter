@@ -35,7 +35,7 @@ spec:
       # imagePullSecrets:
       #   - name: secret
       containers:
-          image: moqihzh/kingbaseslot-exporter:v0.2
+          image: moqihzh/kingbaseslot-exporter:latest
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8001

@@ -86,7 +86,7 @@ uvicorn kingbaseslot-exporter:app --host 0.0.0.0 --port 8001
     在项目根目录下执行：
     ```bash
     # 构建镜像
-    docker build -t kingbaseslot-exporter:latest .
+    docker build -t moqihzh/kingbaseslot-exporter:latest .
     # 运行容器 (请替换环境变量为您的实际值)
     docker run -d -p 8001:8001 \
       -e DB_HOST=your_db_host \
@@ -95,7 +95,7 @@ uvicorn kingbaseslot-exporter:app --host 0.0.0.0 --port 8001
       -e DB_PASSWORD=your_db_password \
       -e DB_NAME=your_db_name \
       --name kingbaseslot-exporter-container \
-      kingbaseslot-exporter:latest
+      moqihzh/kingbaseslot-exporter:latest
     ```
 
 2.  **使用 docker-compose 运行 (推荐用于本地开发和测试)**:
