@@ -1,0 +1,2 @@
+# kingbaseslot-exporter
+kingbaseslot-exporter是一个监控KingbaseES数据库复制槽状态的exporter程序
