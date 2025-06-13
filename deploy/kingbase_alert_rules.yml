@@ -1,0 +1,11 @@
+groups:
+- name: kingbase_replication_slot_alerts
+  rules:
+  - alert: KingbaseReplicationSlotInactive
+    expr: kingbase_replication_slot_active == 0
+    for: 5m # 告警持续时间，可以根据需求调整
+    labels:
+      severity: critical # 告警级别，可以根据需求调整
+    annotations:
+      summary: "Kingbase replication slot inactive (instance {{ $labels.instance }})"
+      description: "Replication slot '{{ $labels.slot_name }}' on Kingbase instance '{{ $labels.instance }}' is inactive. Plugin: '{{ $labels.plugin }}', Slot Type: '{{ $labels.slot_type }}'."

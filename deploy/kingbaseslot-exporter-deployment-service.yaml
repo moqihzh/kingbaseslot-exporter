@@ -1,0 +1,65 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: kingbaseslot-exporter
+  namespace: monitoring
+  labels:
+    app: kingbaseslot-exporter
+spec:
+  type: ClusterIP # 或者 NodePort，根据您的K8s集群网络配置选择
+  ports:
+    - port: 8001
+      targetPort: 8001
+      protocol: TCP
+      name: http
+  selector:
+    app: kingbaseslot-exporter
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kingbaseslot-exporter
+  namespace: monitoring
+  labels:
+    app: kingbaseslot-exporter
+spec:
+  replicas: 1 # 您可以根据需求调整副本数量
+  selector:
+    matchLabels:
+      app: kingbaseslot-exporter
+  template:
+    metadata:
+      labels:
+        app: kingbaseslot-exporter
+    spec:
+      # imagePullSecrets:
+      #   - name: secret
+      containers:
+          image: moqihzh/kingbaseslot-exporter:v0.2
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8001
+          env:
+            - name: DB_HOST
+              value: "xx.xx.xx.xx" # Service name of the KingbaseES database
+            - name: DB_PORT
+              value: "54321"
+            - name: DB_USER
+              value: "system" # 应该与Kingbase配置一致
+            - name: DB_PASSWORD
+              value: "xxx" # 请替换为您的Kingbase密码
+            - name: DB_NAME
+              value: "test" # 应该与Kingbase配置一致
+          readinessProbe 和 livenessProbe 可以根据需要添加
+          readinessProbe:
+            httpGet:
+              path: /health # 或者其他健康检查端点
+              port: 8001
+            initialDelaySeconds: 15
+            periodSeconds: 20
+          livenessProbe:
+            httpGet:
+              path: /health # 或者其他健康检查端点
+              port: 8001
+            initialDelaySeconds: 15
+            periodSeconds: 20

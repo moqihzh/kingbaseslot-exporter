@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  kingbaseslot-exporter:
+    # build:
+    #   context: .
+    #   dockerfile: Dockerfile
+    image: moqihzh/kingbaseslot-exporter:v0.1
+    ports:
+      - "8001:8001"
+    environment:
+      - DB_HOST=kingbase
+      - DB_PORT=54321
+      - DB_USER=system # 您可以根据实际情况修改
+      - DB_PASSWORD=your_kingbase_password # 请替换为您的Kingbase密码
+      - DB_NAME=test # 您可以根据实际情况修改
