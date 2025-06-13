@@ -6,8 +6,8 @@
 它定期查询 KingbaseES 数据库的复制槽信息，并将这些信息转换为 Prometheus 可识别的指标格式，以便进行监控和告警。
 
 ## 支持的数据库
-KingbaseES V8R6
-KingbaseES V9
+- KingbaseES V8R6
+- KingbaseES V9
 
 ## 技术栈
 
