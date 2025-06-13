@@ -132,3 +132,7 @@ scrape_configs:
     static_configs:
       - targets: ['<kingbaseslot-exporter-service-or-ip>:8001'] # 例如: 在Kubernetes中可能是 'kingbaseslot-exporter.monitoring.svc.cluster.local:8001' 或本地运行时的 'localhost:8001'
 ```
+# 截图
+> 浏览器打开http://localhost:8001/docs
+> 
+![截图](./screenshot/image.png)
